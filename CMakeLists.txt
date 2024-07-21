@@ -14,5 +14,8 @@ file(GLOB_RECURSE SOURCES "src/cpp/*.cpp")
 
 include_directories(src/h/)
 
+add_subdirectory(CLI11/)
+
 add_executable(lvlr_prj ${SOURCES})
 
+target_link_libraries(lvlr_prj CLI11::CLI11)

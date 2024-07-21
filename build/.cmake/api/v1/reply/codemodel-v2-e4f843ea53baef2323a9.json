@@ -1,0 +1,144 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.30"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "CLI11",
+					"childIndexes" : 
+					[
+						2,
+						3,
+						4
+					],
+					"jsonFile" : "directory-CLI11-fe182c0ad18fa84954c0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "CLI11"
+				},
+				{
+					"build" : "CLI11/fuzz",
+					"jsonFile" : "directory-CLI11.fuzz-57b78691fa0bac9775c3.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "CLI11/fuzz"
+				},
+				{
+					"build" : "CLI11/src",
+					"jsonFile" : "directory-CLI11.src-5dd5d92ea4e70a729a95.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "CLI11/src",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "CLI11/single-include",
+					"jsonFile" : "directory-CLI11.single-include-adb09ede32f2822fe9a8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.5"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "CLI11/single-include"
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "lvlr",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4
+					],
+					"name" : "CLI11",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "CLI11::@a2c08d5ab967cfe3c187",
+					"jsonFile" : "target-CLI11-07072b4efdf89d739223.json",
+					"name" : "CLI11",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lvlr_prj::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lvlr_prj-b5a49414f02366fa96fa.json",
+					"name" : "lvlr_prj",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/pws/lvlr/build",
+		"source" : "E:/pws/lvlr"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

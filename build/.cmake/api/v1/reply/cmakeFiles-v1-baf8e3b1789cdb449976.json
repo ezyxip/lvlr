@@ -149,6 +149,41 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "E:/app/cmake/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "CLI11/CMakeLists.txt"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/app/cmake/share/cmake-3.30/Modules/CMakeDependentOption.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/app/cmake/share/cmake-3.30/Modules/GNUInstallDirs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/app/cmake/share/cmake-3.30/Modules/FetchContent.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "E:/app/cmake/share/cmake-3.30/Modules/ExternalProject/shared_internal_commands.cmake"
+		},
+		{
+			"path" : "CLI11/cmake/CLI11Warnings.cmake"
+		},
+		{
+			"path" : "CLI11/fuzz/CMakeLists.txt"
+		},
+		{
+			"path" : "CLI11/src/CMakeLists.txt"
+		},
+		{
+			"path" : "CLI11/single-include/CMakeLists.txt"
 		}
 	],
 	"kind" : "cmakeFiles",

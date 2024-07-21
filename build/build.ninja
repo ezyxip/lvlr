@@ -42,12 +42,12 @@ cmake_ninja_workdir = E$:/pws/lvlr/build/
 #############################################
 # Order-only phony target for lvlr_prj
 
-build cmake_object_order_depends_target_lvlr_prj: phony || .
+build cmake_object_order_depends_target_lvlr_prj: phony || CLI11/src/CLI11
 
 build CMakeFiles/lvlr_prj.dir/src/cpp/main.cpp.obj: CXX_COMPILER__lvlr_prj_unscanned_ E$:/pws/lvlr/src/cpp/main.cpp || cmake_object_order_depends_target_lvlr_prj
   DEP_FILE = CMakeFiles\lvlr_prj.dir\src\cpp\main.cpp.obj.d
   FLAGS = -std=gnu++14
-  INCLUDES = -IE:/pws/lvlr/src/h
+  INCLUDES = -IE:/pws/lvlr/src/h -isystem E:/pws/lvlr/CLI11/include
   OBJECT_DIR = CMakeFiles\lvlr_prj.dir
   OBJECT_FILE_DIR = CMakeFiles\lvlr_prj.dir\src\cpp
 
@@ -59,7 +59,7 @@ build CMakeFiles/lvlr_prj.dir/src/cpp/main.cpp.obj: CXX_COMPILER__lvlr_prj_unsca
 #############################################
 # Link the executable lvlr_prj.exe
 
-build lvlr_prj.exe: CXX_EXECUTABLE_LINKER__lvlr_prj_ CMakeFiles/lvlr_prj.dir/src/cpp/main.cpp.obj
+build lvlr_prj.exe: CXX_EXECUTABLE_LINKER__lvlr_prj_ CMakeFiles/lvlr_prj.dir/src/cpp/main.cpp.obj || CLI11/src/CLI11
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\lvlr_prj.dir
   POST_BUILD = cd .
@@ -93,7 +93,131 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# E:/pws/lvlr/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build CLI11/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\pws\lvlr\build\CLI11 && E:\app\cmake\bin\cmake-gui.exe -SE:\pws\lvlr -BE:\pws\lvlr\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build CLI11/edit_cache: phony CLI11/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CLI11/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\pws\lvlr\build\CLI11 && E:\app\cmake\bin\cmake.exe --regenerate-during-build -SE:\pws\lvlr -BE:\pws\lvlr\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build CLI11/rebuild_cache: phony CLI11/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# E:/pws/lvlr/CLI11/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build CLI11/fuzz/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\pws\lvlr\build\CLI11\fuzz && E:\app\cmake\bin\cmake-gui.exe -SE:\pws\lvlr -BE:\pws\lvlr\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build CLI11/fuzz/edit_cache: phony CLI11/fuzz/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CLI11/fuzz/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\pws\lvlr\build\CLI11\fuzz && E:\app\cmake\bin\cmake.exe --regenerate-during-build -SE:\pws\lvlr -BE:\pws\lvlr\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build CLI11/fuzz/rebuild_cache: phony CLI11/fuzz/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# E:/pws/lvlr/CLI11/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for CLI11
+
+build CLI11/src/CLI11: phony
+
+
+#############################################
+# Utility command for edit_cache
+
+build CLI11/src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\pws\lvlr\build\CLI11\src && E:\app\cmake\bin\cmake-gui.exe -SE:\pws\lvlr -BE:\pws\lvlr\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build CLI11/src/edit_cache: phony CLI11/src/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CLI11/src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\pws\lvlr\build\CLI11\src && E:\app\cmake\bin\cmake.exe --regenerate-during-build -SE:\pws\lvlr -BE:\pws\lvlr\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build CLI11/src/rebuild_cache: phony CLI11/src/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# E:/pws/lvlr/CLI11/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build CLI11/single-include/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\pws\lvlr\build\CLI11\single-include && E:\app\cmake\bin\cmake-gui.exe -SE:\pws\lvlr -BE:\pws\lvlr\build"
+  DESC = Running CMake cache editor...
+  pool = console
+  restat = 1
+
+build CLI11/single-include/edit_cache: phony CLI11/single-include/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build CLI11/single-include/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = C:\WINDOWS\system32\cmd.exe /C "cd /D E:\pws\lvlr\build\CLI11\single-include && E:\app\cmake\bin\cmake.exe --regenerate-during-build -SE:\pws\lvlr -BE:\pws\lvlr\build"
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build CLI11/single-include/rebuild_cache: phony CLI11/single-include/CMakeFiles/rebuild_cache.util
+
+# =============================================================================
 # Target aliases.
+
+build CLI11: phony CLI11/src/CLI11
 
 build lvlr_prj: phony lvlr_prj.exe
 
@@ -105,7 +229,35 @@ build lvlr_prj: phony lvlr_prj.exe
 #############################################
 # Folder: E:/pws/lvlr/build
 
-build all: phony lvlr_prj.exe
+build all: phony lvlr_prj.exe CLI11/all
+
+# =============================================================================
+
+#############################################
+# Folder: E:/pws/lvlr/build/CLI11
+
+build CLI11/all: phony CLI11/fuzz/all CLI11/src/all CLI11/single-include/all
+
+# =============================================================================
+
+#############################################
+# Folder: E:/pws/lvlr/build/CLI11/fuzz
+
+build CLI11/fuzz/all: phony
+
+# =============================================================================
+
+#############################################
+# Folder: E:/pws/lvlr/build/CLI11/single-include
+
+build CLI11/single-include/all: phony
+
+# =============================================================================
+
+#############################################
+# Folder: E:/pws/lvlr/build/CLI11/src
+
+build CLI11/src/all: phony CLI11/src/CLI11
 
 # =============================================================================
 # Built-in targets
@@ -114,14 +266,14 @@ build all: phony lvlr_prj.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.30.0/CMakeCCompiler.cmake CMakeFiles/3.30.0/CMakeCXXCompiler.cmake CMakeFiles/3.30.0/CMakeRCCompiler.cmake CMakeFiles/3.30.0/CMakeSystem.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCXXInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeGenericSystem.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeRCInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU-C.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-windres.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake E$:/pws/lvlr/CMakeLists.txt
+build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles/3.30.0/CMakeCCompiler.cmake CMakeFiles/3.30.0/CMakeCXXCompiler.cmake CMakeFiles/3.30.0/CMakeRCCompiler.cmake CMakeFiles/3.30.0/CMakeSystem.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCXXInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeDependentOption.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeGenericSystem.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeRCInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU-C.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU.cmake E$:/app/cmake/share/cmake-3.30/Modules/ExternalProject/shared_internal_commands.cmake E$:/app/cmake/share/cmake-3.30/Modules/FetchContent.cmake E$:/app/cmake/share/cmake-3.30/Modules/GNUInstallDirs.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-windres.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake E$:/pws/lvlr/CLI11/CMakeLists.txt E$:/pws/lvlr/CLI11/cmake/CLI11Warnings.cmake E$:/pws/lvlr/CLI11/fuzz/CMakeLists.txt E$:/pws/lvlr/CLI11/single-include/CMakeLists.txt E$:/pws/lvlr/CLI11/src/CMakeLists.txt E$:/pws/lvlr/CMakeLists.txt
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build CMakeCache.txt CMakeFiles/3.30.0/CMakeCCompiler.cmake CMakeFiles/3.30.0/CMakeCXXCompiler.cmake CMakeFiles/3.30.0/CMakeRCCompiler.cmake CMakeFiles/3.30.0/CMakeSystem.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCXXInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeGenericSystem.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeRCInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU-C.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-windres.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake E$:/pws/lvlr/CMakeLists.txt: phony
+build CMakeCache.txt CMakeFiles/3.30.0/CMakeCCompiler.cmake CMakeFiles/3.30.0/CMakeCXXCompiler.cmake CMakeFiles/3.30.0/CMakeRCCompiler.cmake CMakeFiles/3.30.0/CMakeSystem.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCXXInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeDependentOption.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeGenericSystem.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeRCInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake E$:/app/cmake/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU-C.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake E$:/app/cmake/share/cmake-3.30/Modules/Compiler/GNU.cmake E$:/app/cmake/share/cmake-3.30/Modules/ExternalProject/shared_internal_commands.cmake E$:/app/cmake/share/cmake-3.30/Modules/FetchContent.cmake E$:/app/cmake/share/cmake-3.30/Modules/GNUInstallDirs.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-C-ABI.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-C.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX-ABI.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU-CXX.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-GNU.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-Initialize.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows-windres.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/Windows.cmake E$:/app/cmake/share/cmake-3.30/Modules/Platform/WindowsPaths.cmake E$:/pws/lvlr/CLI11/CMakeLists.txt E$:/pws/lvlr/CLI11/cmake/CLI11Warnings.cmake E$:/pws/lvlr/CLI11/fuzz/CMakeLists.txt E$:/pws/lvlr/CLI11/single-include/CMakeLists.txt E$:/pws/lvlr/CLI11/src/CMakeLists.txt E$:/pws/lvlr/CMakeLists.txt: phony
 
 
 #############################################
