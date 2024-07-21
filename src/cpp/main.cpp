@@ -6,13 +6,19 @@ void addOptions(std::map<std::string, std::string> &keys, CLI::App &app){
         bool res = true;
         keys["finput"] = strs[0];
         return true;
-    }, "Input file path");
+    }, "Input audiofile path");
 
     app.add_option("--file-output", [&](std::vector<std::string> strs) -> bool {
         bool res = true;
         keys["foutput"] = strs[0];
         return res;
-    }, "Output file path");
+    }, "Output audiofile path");
+
+    app.add_option("--filter", [&](std::vector<std::string> strs) -> bool {
+        bool res = true;
+        keys["ffilter"] = strs[0];
+        return res;
+    }, "Filter .yaml file path");
 }
 
 int main(int argc, char** argv){
@@ -20,6 +26,7 @@ int main(int argc, char** argv){
 
     //finput - файл с входной информацией
     //foutput - выходной файл
+    //ffilter - .yaml файл с фильтром
     std::map<std::string, std::string> keys;
 
     addOptions(keys, app);
