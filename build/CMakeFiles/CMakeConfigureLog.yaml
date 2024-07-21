@@ -657,3 +657,127 @@ events:
       Running the CXX compiler's linker: "../src/gcc-13.2.0/configure --host=x86_64-w64-mingw32 --build=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --prefix=/mingw64 --with-sysroot=/c/buildroot/x86_64-1320-mcf-seh-ucrt-rt_v11-rev1/mingw64 --enable-host-shared --disable-multilib --enable-languages=c,c++,fortran,lto --enable-libstdcxx-time=yes --enable-threads=mcf --enable-libgomp --enable-libatomic --enable-lto --enable-graphite --enable-checking=release --enable-fully-dynamic-string --enable-version-specific-runtime-libs --enable-libstdcxx-filesystem-ts=yes --disable-libssp --disable-libstdcxx-pch --disable-libstdcxx-debug --enable-bootstrap --disable-rpath --disable-win32-registry --disable-nls --disable-werror --disable-symvers --with-gnu-as --with-gnu-ld --with-arch=nocona --with-tune=core2 --with-libiconv --with-system-zlib --with-gmp=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpfr=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-mpc=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-isl=/c/buildroot/prerequisites/x86_64-w64-mingw32-static --with-pkgversion='x86_64-mcf-seh-rev1, Built by MinGW-Builds project' --with-bugurl=https:/github.com/niXman/mingw-builds CFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1320-mcf-seh-ucrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CXXFLAGS='-O2 -pipe -fno-ident -I/c/buildroot/x86_64-1320-mcf-seh-ucrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' CPPFLAGS=' -I/c/buildroot/x86_64-1320-mcf-seh-ucrt-rt_v11-rev1/mingw64/opt/include -I/c/buildroot/prerequisites/x86_64-zlib-static/include -I/c/buildroot/prerequisites/x86_64-w64-mingw32-static/include' LDFLAGS='-pipe -fno-ident -L/c/buildroot/x86_64-1320-mcf-seh-ucrt-rt_v11-rev1/mingw64/opt/lib -L/c/buildroot/prerequisites/x86_64-zlib-static/lib -L/c/buildroot/prerequisites/x86_64-w64-mingw32-static/lib ' LD_FOR_TARGET=/c/buildroot/x86_64-1320-mcf-seh-ucrt-rt_v11-rev1/mingw64/bin/ld.exe" "--version"
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/app/cmake/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "E:/app/cmake/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "E:/app/cmake/share/cmake-3.30/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "E:/app/cmake/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "portaudio/CMakeLists.txt:86 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-txgrjy"
+      binary: "E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-txgrjy"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-txgrjy'
+        
+        Run Build Command(s): E:/app/ninja/ninja.exe -v cmTC_f47e3
+        [1/2] E:\\app\\mingw64\\bin\\gcc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_f47e3.dir/src.c.obj -c E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-txgrjy/src.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && E:\\app\\mingw64\\bin\\gcc.exe   CMakeFiles/cmTC_f47e3.dir/src.c.obj -o cmTC_f47e3.exe -Wl,--out-implib,libcmTC_f47e3.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        FAILED: cmTC_f47e3.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && E:\\app\\mingw64\\bin\\gcc.exe   CMakeFiles/cmTC_f47e3.dir/src.c.obj -o cmTC_f47e3.exe -Wl,--out-implib,libcmTC_f47e3.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        E:/app/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles/cmTC_f47e3.dir/src.c.obj:src.c:(.text+0x35): undefined reference to `pthread_create'
+        E:/app/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles/cmTC_f47e3.dir/src.c.obj:src.c:(.text+0x41): undefined reference to `pthread_detach'
+        E:/app/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles/cmTC_f47e3.dir/src.c.obj:src.c:(.text+0x4d): undefined reference to `pthread_cancel'
+        E:/app/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles/cmTC_f47e3.dir/src.c.obj:src.c:(.text+0x5e): undefined reference to `pthread_join'\x0d
+        E:/app/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: CMakeFiles/cmTC_f47e3.dir/src.c.obj:src.c:(.text+0x68): undefined reference to `pthread_exit'\x0d
+        collect2.exe: error: ld returned 1 exit status
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/app/cmake/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "E:/app/cmake/share/cmake-3.30/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "E:/app/cmake/share/cmake-3.30/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "portaudio/CMakeLists.txt:86 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-h29yd2"
+      binary: "E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-h29yd2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-h29yd2'
+        
+        Run Build Command(s): E:/app/ninja/ninja.exe -v cmTC_92fe3
+        [1/2] E:\\app\\mingw64\\bin\\gcc.exe   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_92fe3.dir/CheckFunctionExists.c.obj -c E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-h29yd2/CheckFunctionExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && E:\\app\\mingw64\\bin\\gcc.exe -DCHECK_FUNCTION_EXISTS=pthread_create  CMakeFiles/cmTC_92fe3.dir/CheckFunctionExists.c.obj -o cmTC_92fe3.exe -Wl,--out-implib,libcmTC_92fe3.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lpthreads  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        FAILED: cmTC_92fe3.exe 
+        C:\\WINDOWS\\system32\\cmd.exe /C "cd . && E:\\app\\mingw64\\bin\\gcc.exe -DCHECK_FUNCTION_EXISTS=pthread_create  CMakeFiles/cmTC_92fe3.dir/CheckFunctionExists.c.obj -o cmTC_92fe3.exe -Wl,--out-implib,libcmTC_92fe3.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lpthreads  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        E:/app/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/13.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lpthreads: No such file or directory\x0d
+        collect2.exe: error: ld returned 1 exit status
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/app/cmake/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "E:/app/cmake/share/cmake-3.30/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "E:/app/cmake/share/cmake-3.30/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "portaudio/CMakeLists.txt:86 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-lne2bj"
+      binary: "E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-lne2bj"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-lne2bj'
+        
+        Run Build Command(s): E:/app/ninja/ninja.exe -v cmTC_9c242
+        [1/2] E:\\app\\mingw64\\bin\\gcc.exe   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_9c242.dir/CheckFunctionExists.c.obj -c E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-lne2bj/CheckFunctionExists.c
+        [2/2] C:\\WINDOWS\\system32\\cmd.exe /C "cd . && E:\\app\\mingw64\\bin\\gcc.exe -DCHECK_FUNCTION_EXISTS=pthread_create  CMakeFiles/cmTC_9c242.dir/CheckFunctionExists.c.obj -o cmTC_9c242.exe -Wl,--out-implib,libcmTC_9c242.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lpthread  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "E:/app/cmake/share/cmake-3.30/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "portaudio/cmake/modules/FindRegex.cmake:23 (check_include_file)"
+      - "portaudio/cmake/modules/FindJACK.cmake:38 (find_package)"
+      - "portaudio/CMakeLists.txt:138 (find_package)"
+    directories:
+      source: "E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-it2pb8"
+      binary: "E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-it2pb8"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_MODULE_PATH: ";E:/pws/lvlr/portaudio/cmake/modules"
+    buildResult:
+      variable: "REGEX_H"
+      cached: true
+      stdout: |
+        Change Dir: 'E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-it2pb8'
+        
+        Run Build Command(s): E:/app/ninja/ninja.exe -v cmTC_e1d07
+        [1/2] E:\\app\\mingw64\\bin\\gcc.exe    -o CMakeFiles/cmTC_e1d07.dir/CheckIncludeFile.c.obj -c E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-it2pb8/CheckIncludeFile.c
+        FAILED: CMakeFiles/cmTC_e1d07.dir/CheckIncludeFile.c.obj 
+        E:\\app\\mingw64\\bin\\gcc.exe    -o CMakeFiles/cmTC_e1d07.dir/CheckIncludeFile.c.obj -c E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-it2pb8/CheckIncludeFile.c
+        E:/pws/lvlr/build/CMakeFiles/CMakeScratch/TryCompile-it2pb8/CheckIncludeFile.c:1:10: fatal error: regex.h: No such file or directory
+            1 | #include <regex.h>
+              |          ^~~~~~~~~
+        compilation terminated.\x0d
+        ninja: build stopped: subcommand failed.
+        
+      exitCode: 1
+...

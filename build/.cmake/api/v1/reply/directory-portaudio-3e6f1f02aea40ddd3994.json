@@ -1,0 +1,149 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"portaudio/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 421,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 422,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 425,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 438,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 442,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 465,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "share/doc/PortAudio/portaudio",
+			"paths" : 
+			[
+				"portaudio/README.md"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "share/doc/PortAudio/portaudio",
+			"paths" : 
+			[
+				"portaudio/LICENSE.txt"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 3,
+			"component" : "Unspecified",
+			"destination" : "lib/pkgconfig",
+			"paths" : 
+			[
+				"build/portaudio/portaudio-2.0.pc"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 4,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/portaudio",
+			"exportName" : "PortAudio-targets",
+			"exportTargets" : 
+			[
+				{
+					"id" : "PortAudio::@7bdaf24a3bf74634aa6c",
+					"index" : 1
+				}
+			],
+			"paths" : 
+			[
+				"portaudio/CMakeFiles/Export/90a8b282bce0779409342a760050f91f/PortAudioTargets.cmake"
+			],
+			"type" : "export"
+		},
+		{
+			"backtrace" : 5,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/portaudio",
+			"paths" : 
+			[
+				"build/portaudio/cmake/portaudio/PortAudioConfig.cmake",
+				"build/portaudio/cmake/portaudio/PortAudioConfigVersion.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"portaudio/libportaudio.a"
+			],
+			"targetId" : "PortAudio::@7bdaf24a3bf74634aa6c",
+			"targetIndex" : 1,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 6,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"portaudio/include/portaudio.h",
+				"portaudio/include/pa_win_waveformat.h",
+				"portaudio/include/pa_win_ds.h",
+				"portaudio/include/pa_win_wmme.h",
+				"portaudio/include/pa_win_wasapi.h",
+				"portaudio/include/pa_win_wdmks.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "portaudio",
+		"source" : "portaudio"
+	}
+}

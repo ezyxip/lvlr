@@ -333,6 +333,72 @@ FETCHCONTENT_QUIET:BOOL=ON
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
+//JACK header
+JACK_INCLUDEDIR:PATH=JACK_INCLUDEDIR-NOTFOUND
+
+//JACK library
+JACK_LINK_LIBRARIES:FILEPATH=JACK_LINK_LIBRARIES-NOTFOUND
+
+//Include example projects
+PA_BUILD_EXAMPLES:BOOL=OFF
+
+//Build dynamic library
+PA_BUILD_SHARED_LIBS:BOOL=OFF
+
+//Include test projects
+PA_BUILD_TESTS:BOOL=OFF
+
+//Enable debug output for Portaudio
+PA_ENABLE_DEBUG_OUTPUT:BOOL=OFF
+
+//Enable support for ASIO
+PA_USE_ASIO:BOOL=OFF
+
+//Enable support for DirectSound
+PA_USE_DS:BOOL=ON
+
+//Use skeleton host API
+PA_USE_SKELETON:BOOL=OFF
+
+//Enable support for WASAPI
+PA_USE_WASAPI:BOOL=ON
+
+//Enable support for WDMKS
+PA_USE_WDMKS:BOOL=ON
+
+//Use WDM/KS API for device info
+PA_USE_WDMKS_DEVICE_INFO:BOOL=ON
+
+//Enable support for WMME
+PA_USE_WMME:BOOL=ON
+
+//Turn compiler warnings into errors
+PA_WARNINGS_ARE_ERRORS:BOOL=OFF
+
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=PKG_CONFIG_EXECUTABLE-NOTFOUND
+
+//Value Computed by CMake
+PortAudio_BINARY_DIR:STATIC=E:/pws/lvlr/build/portaudio
+
+//Value Computed by CMake
+PortAudio_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for the target
+PortAudio_LIB_DEPENDS:STATIC=general;winmm;general;dsound;general;ole32;general;uuid;general;ole32;general;uuid;general;setupapi;general;ole32;general;uuid;
+
+//Value Computed by CMake
+PortAudio_SOURCE_DIR:STATIC=E:/pws/lvlr/portaudio
+
+//Path to a library.
+TRE_LIBRARY:FILEPATH=TRE_LIBRARY-NOTFOUND
+
+//Path to a file.
+TRE_REGEX_H:PATH=TRE_REGEX_H-NOTFOUND
+
 //Value Computed by CMake
 lvlr_BINARY_DIR:STATIC=E:/pws/lvlr/build
 
@@ -425,6 +491,12 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Test CMAKE_HAVE_LIBC_PTHREAD
+CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=
+//Have library pthreads
+CMAKE_HAVE_PTHREADS_CREATE:INTERNAL=
+//Have library pthread
+CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=E:/pws/lvlr
@@ -477,7 +549,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=5
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -533,6 +605,14 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_TAPI-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding Threads
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//Have include regex.h
+REGEX_H:INTERNAL=
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
