@@ -37,11 +37,10 @@ AudioData read_audio_file(std::string input_file)
 
     int num_samples = info.frames * info.channels;
 
-    AudioData audioData;
-    audioData.sampleRate = info.samplerate;
-    audioData.channels = info.channels;
-    audioData.totalFrames = info.frames;
-    audioData.position = 0;
+    AudioData audioData = {
+        0, info.frames, info.samplerate, info.channels
+    };
+    
 
     audioData.buffer.resize(num_samples);
 
@@ -96,7 +95,8 @@ int pa_stream_callback(
         }
         for (int ch = 0; ch < audioData->channels; ++ch)
         {
-            *out++ = audioData->buffer[audioData->position * audioData->channels + ch];
+            *out++ = audioData->filter.process(audioData->buffer[audioData->position * audioData->channels + ch]);
+            // *out++ = audioData->buffer[audioData->position * audioData->channels + ch];
         }
         ++audioData->position;
     }

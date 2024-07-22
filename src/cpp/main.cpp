@@ -1,6 +1,7 @@
 #include <iostream>
-#include <app.h>
 #include <thread>
+#include <app.h>
+#include <biquad.h>
 
 int main(int argc, char **argv)
 {

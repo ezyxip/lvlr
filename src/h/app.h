@@ -5,15 +5,38 @@
 #include <sndfile.h>
 #include <iostream>
 #include <vector>
+
+#include <biquad.h>
+
 #include <CLI/CLI.hpp>
 #include <portaudio.h>
 
-struct AudioData {
+class AudioData
+{
+public:
+    AudioData(
+        size_t position,
+        long long int totalFrames,
+        int sampleRate,
+        int channels
+    )
+    {
+        this->position = position;
+        this->totalFrames = totalFrames;
+        this->sampleRate = sampleRate;
+        this->channels = channels;
+
+        // filter = BiquadFilter(bq_type_lowshelf, 1000.0 / sampleRate, 1, -20);
+        filter = BiquadFilter();
+        filter.setBiquad(bq_type_lowpass, 1000.0 / sampleRate, 1.3, 50);
+        
+    }
     std::vector<float> buffer;
     size_t position;
     size_t totalFrames;
     int sampleRate;
     int channels;
+    BiquadFilter filter;
 };
 
 void conf_options(std::map<std::string, std::string> &keys, CLI::App &app);
