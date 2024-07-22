@@ -1,13 +1,14 @@
 #include <iostream>
 #include <CLI/CLI.hpp>
 #include <app.h>
+#include <sndfile.h>
 
 void addOptions(std::map<std::string, std::string> &keys, CLI::App &app){
     app.add_option("--file-input", [&](std::vector<std::string> strs) -> bool {
         bool res = true;
         keys["finput"] = strs[0];
         return check_input_file(strs[0]);
-    }, "Input audiofile path");
+    }, "Input audiofile path")->required();
 
     app.add_option("--file-output", [&](std::vector<std::string> strs) -> bool {
         bool res = true;
@@ -34,8 +35,5 @@ int main(int argc, char** argv){
 
     CLI11_PARSE(app, argc, argv);
     
-    std::cout << "finput: " << keys["finput"] << "\n";
-    std::cout << "foutput: " << keys["foutput"] << "\n";
-
-    
+    std::vector<short> audio = read_audio_file(keys["finput"]);
 }

@@ -16,8 +16,10 @@ include_directories(src/h/)
 
 add_subdirectory(CLI11/)
 add_subdirectory(portaudio/)
+add_subdirectory(libsndfile/)
 
 add_executable(lvlr_prj ${SOURCES})
 
 target_link_libraries(lvlr_prj CLI11::CLI11)
 target_link_libraries(lvlr_prj PortAudio)
+target_link_libraries(lvlr_prj SndFile::sndfile)
