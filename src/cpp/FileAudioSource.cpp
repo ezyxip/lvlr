@@ -1,6 +1,6 @@
 #include <stdexcept>
 #include <functional>
-#include <FileAudioSource.h>
+#include <ContainerAudioSource.h>
 #include <portaudio.h>
 
 lvlr::ContainerAudioSource::ContainerAudioSource(std::shared_ptr<lvlr::Filter> filter, lvlr::AudioContainer containter, PaStreamCallback callback)
@@ -23,7 +23,7 @@ lvlr::ContainerAudioSource::ContainerAudioSource(std::shared_ptr<lvlr::Filter> f
         containter.getSampleRate(),
         paFramesPerBufferUnspecified,
         callback,
-        &containter);
+        this);
 
     if (err != paNoError)
     {
@@ -71,9 +71,10 @@ int lvlr::container_to_std_dinamic_callback(
     unsigned long frameCount,
     const PaStreamCallbackTimeInfo *timeInfo,
     PaStreamCallbackFlags statusFlags,
-    void *userData)
+    void *audioManager)
 {
-    AudioContainer *audioData = static_cast<AudioContainer*>(userData);
+    ContainerAudioSource* data = static_cast<ContainerAudioSource*>(audioManager);
+    AudioContainer* audioData = &data->containter;
     float *out = static_cast<float *>(output);
 
     for (size_t i = 0; i < frameCount; ++i)

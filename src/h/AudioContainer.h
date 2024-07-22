@@ -13,6 +13,7 @@ namespace lvlr
         int getChannels();
         long long int getTotalFrames();
         float nextSample();
+        int getPosition();
 
     protected:
         int currentSample;

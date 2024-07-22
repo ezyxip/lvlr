@@ -11,6 +11,9 @@ namespace lvlr
     class ContainerAudioSource : public AudioSource
     {
     public:
+        std::shared_ptr<lvlr::Filter> filter;
+        lvlr::AudioContainer containter;
+
         ContainerAudioSource(std::shared_ptr<lvlr::Filter> filter, lvlr::AudioContainer containter, PaStreamCallback callback);
         ~ContainerAudioSource();
         void setFilter(std::shared_ptr<lvlr::Filter> filter) override;
@@ -20,8 +23,6 @@ namespace lvlr
 
     protected:
         PaStreamCallback *callback;
-        std::shared_ptr<lvlr::Filter> filter;
-        lvlr::AudioContainer containter;
         std::shared_ptr<PaStream> pa_stream;
     };
 
