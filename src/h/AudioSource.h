@@ -1,11 +1,17 @@
 #ifndef AUDIOSOURCE_H
 #define AUDIOSOURCE_H
 
-class AudioSource{
+#include <memory>
+#include <DSPFilter.h>
+
+namespace lvlr
+{
+    class AudioSource
+    {
     public:
-    virtual int getSampleRate() = 0;
-    virtual int getChannels() = 0;
-    virtual float nextSample() = 0;
-};
+        virtual void run() = 0;
+        virtual void setFilter(std::shared_ptr<lvlr::Filter> filter) = 0;
+    };
+}
 
 #endif

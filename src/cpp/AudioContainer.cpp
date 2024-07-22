@@ -1,5 +1,7 @@
 #include <AudioContainer.h>
 
+using namespace lvlr;
+
 AudioContainer::AudioContainer(int sample_rate, int channels, long long int total_frames, std::vector<float> data)
     : sample_rate(sample_rate),
       channels(channels),

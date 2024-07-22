@@ -2,6 +2,8 @@
 #include <app.h>
 #include <thread>
 
+using namespace lvlr;
+
 int main(int argc, char **argv)
 {
     CLI::App app("CLI stream equalizer", "lvlr");
