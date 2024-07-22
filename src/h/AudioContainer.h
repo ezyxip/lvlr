@@ -1,5 +1,5 @@
-#ifndef FILEAUDIOSOURCE_H
-#define FILEAUDIOSOURCE_H
+#ifndef AUDIOCONTAINER_H
+#define AUDIOCONTAINER_H
 
 #include <vector>
 namespace lvlr

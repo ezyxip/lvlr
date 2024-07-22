@@ -11,6 +11,8 @@ namespace lvlr
     public:
         virtual void run() = 0;
         virtual void setFilter(std::shared_ptr<lvlr::Filter> filter) = 0;
+        virtual bool isDone() = 0;
+        virtual void wait() = 0;
     };
 }
 

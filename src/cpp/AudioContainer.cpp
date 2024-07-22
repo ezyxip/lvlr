@@ -30,3 +30,8 @@ long long int AudioContainer::getTotalFrames(){
 float AudioContainer::nextSample(){
     return data[currentSample++];
 }
+
+int lvlr::AudioContainer::getPosition()
+{
+    return currentSample;
+}
