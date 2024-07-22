@@ -1,39 +1,58 @@
 #include <iostream>
-#include <CLI/CLI.hpp>
 #include <app.h>
-#include <sndfile.h>
+#include <thread>
 
-void addOptions(std::map<std::string, std::string> &keys, CLI::App &app){
-    app.add_option("--file-input", [&](std::vector<std::string> strs) -> bool {
-        bool res = true;
-        keys["finput"] = strs[0];
-        return check_input_file(strs[0]);
-    }, "Input audiofile path")->required();
-
-    app.add_option("--file-output", [&](std::vector<std::string> strs) -> bool {
-        bool res = true;
-        keys["foutput"] = strs[0];
-        return check_output_file(strs[0]);
-    }, "Output audiofile path");
-
-    app.add_option("--filter", [&](std::vector<std::string> strs) -> bool {
-        bool res = true;
-        keys["ffilter"] = strs[0];
-        return check_filter_file(strs[0]);
-    }, "Filter .yaml file path");
-}
-
-int main(int argc, char** argv){
+int main(int argc, char **argv)
+{
     CLI::App app("CLI stream equalizer", "lvlr");
 
-    //finput - файл с входной информацией
-    //foutput - выходной файл
-    //ffilter - .yaml файл с фильтром
+    // finput - файл с входной информацией
+    // foutput - выходной файл
+    // ffilter - .yaml файл с фильтром
     std::map<std::string, std::string> keys;
 
-    addOptions(keys, app);
+    conf_options(keys, app);
 
     CLI11_PARSE(app, argc, argv);
-    
-    std::vector<short> audio = read_audio_file(keys["finput"]);
+
+    AudioData audio = read_audio_file(keys["finput"]);
+
+    PaError err = Pa_Initialize();
+    if (err != paNoError)
+        printf("PortAudio error 1: %s\n", Pa_GetErrorText(err));
+
+    PaStream *stream;
+    err = Pa_OpenDefaultStream(
+        &stream,
+        0,
+        audio.channels,
+        paFloat32,
+        audio.sampleRate,
+        paFramesPerBufferUnspecified,
+        pa_stream_callback,
+        &audio);
+
+    if (err != paNoError)
+        printf("PortAudio error 2: %s\n", Pa_GetErrorText(err));
+
+    err = Pa_StartStream(stream);
+    if (err != paNoError)
+    {
+        std::cerr << "PortAudio error: " << Pa_GetErrorText(err) << std::endl;
+        Pa_CloseStream(stream);
+        Pa_Terminate();
+        return 1;
+    }
+
+    while (Pa_IsStreamActive(stream) == 1)
+    {
+        Pa_Sleep(100);
+    }
+
+    // Остановка и закрытие аудиопотока
+    Pa_StopStream(stream);
+    Pa_CloseStream(stream);
+    Pa_Terminate();
+
+    return 0;
 }
