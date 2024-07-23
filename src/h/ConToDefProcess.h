@@ -17,9 +17,9 @@ namespace lvlr
     {
     public:
         std::shared_ptr<lvlr::Filter> filter;
-        lvlr::AudioContainer containter;
+        std::shared_ptr<lvlr::AudioContainer> containter;
 
-        ConToDefProcess(std::shared_ptr<lvlr::Filter> filter, lvlr::AudioContainer containter);
+        ConToDefProcess(std::shared_ptr<lvlr::Filter> filter, std::shared_ptr<lvlr::AudioContainer> containter);
         ~ConToDefProcess();
         void setFilter(std::shared_ptr<lvlr::Filter> filter) override;
         void run() override;

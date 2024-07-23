@@ -3,25 +3,24 @@
 #include <ConToDefProcess.h>
 #include <portaudio.h>
 
-lvlr::ConToDefProcess::ConToDefProcess(std::shared_ptr<lvlr::Filter> filter, lvlr::AudioContainer containter)
+lvlr::ConToDefProcess::ConToDefProcess(std::shared_ptr<lvlr::Filter> filter, std::shared_ptr<lvlr::AudioContainer> containter)
     : filter(filter),
       containter(containter)
 {
-    this->data = lvlr::ConToDefProcessData{filter, std::make_shared<AudioContainer>(this->containter)};
+    this->data = lvlr::ConToDefProcessData{filter, containter};
 
     PaError err = Pa_Initialize();
     if (err != paNoError)
     {
         throw std::runtime_error("PortAudio init exception: " + std::string(Pa_GetErrorText(err)));
     }
-    auto stream = pa_stream;
 
     err = Pa_OpenDefaultStream(
-        &stream,
+        &pa_stream,
         0,
-        containter.getChannels(),
+        containter->getChannels(),
         paFloat32,
-        containter.getSampleRate(),
+        containter->getSampleRate(),
         paFramesPerBufferUnspecified,
         container_to_def_callback,
         &data);
@@ -53,7 +52,7 @@ bool lvlr::ConToDefProcess::isDone()
 
 void lvlr::ConToDefProcess::wait()
 {
-    while (!isDone())
+    while (Pa_IsStreamActive(pa_stream) == 1)
     {
         Pa_Sleep(100);
     }
@@ -75,7 +74,7 @@ int lvlr::container_to_def_callback(
     void *audioManager)
 {
     ConToDefProcess* data = static_cast<ConToDefProcess*>(audioManager);
-    AudioContainer* audioData = &data->containter;
+    auto audioData = data->containter;
     float *out = static_cast<float *>(output);
 
     for (size_t i = 0; i < frameCount; ++i)
@@ -84,10 +83,7 @@ int lvlr::container_to_def_callback(
         {
             return paComplete;
         }
-        for (int ch = 0; ch < audioData->getChannels(); ++ch)
-        {
-            *out++ = audioData->nextSample();
-        }
+        *out++ = audioData->nextSample();
         
     }
     return paContinue;

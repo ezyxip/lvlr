@@ -1,9 +1,13 @@
 #include <iostream>
 #include <memory>
+#include <chrono>
 #include <app.h>
 #include <thread>
 #include <ConToDefProcess.h>
 #include <DSPFilter.h>
+
+using namespace std::chrono_literals;
+
 
 class FakeFilter: public lvlr::Filter{
 public: 
@@ -25,15 +29,20 @@ int main(int argc, char **argv)
 
     CLI11_PARSE(app, argc, argv);
 
-    lvlr::AudioContainer audio = lvlr::read_audio_file(keys["finput"]);
+    auto audio = std::make_shared<lvlr::AudioContainer>(lvlr::read_audio_file(keys["finput"]));
     
     std::shared_ptr<FakeFilter> filter {new FakeFilter()};
 
     lvlr::ConToDefProcess process(std::static_pointer_cast<lvlr::Filter>(filter), audio);
 
     process.run();
+    std::cout << "1235";
+    Pa_Sleep(3000);
 
-    process.wait();
+    std::cout << "!!!";
+    // process.wait();
+    // std::this_thread::sleep_for(2000ms);
+    
 
     return 0;
 }
