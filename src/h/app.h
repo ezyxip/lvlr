@@ -5,6 +5,9 @@
 #include <sndfile.h>
 #include <iostream>
 #include <vector>
+
+#include <AudioContainer.h>
+
 #include <CLI/CLI.hpp>
 #include <portaudio.h>
 
@@ -25,7 +28,7 @@ namespace lvlr
     bool check_output_file(std::string filepath);
     bool check_filter_file(std::string filepath);
 
-    AudioData read_audio_file(std::string input_file);
+    AudioContainer read_audio_file(std::string input_file);
 
     int pa_stream_callback(
         const void *input,

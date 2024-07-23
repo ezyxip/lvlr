@@ -1,12 +1,12 @@
-#ifndef AUDIOSOURCE_H
-#define AUDIOSOURCE_H
+#ifndef AUDIOPROCESS_H
+#define AUDIOPROCESS_H
 
 #include <memory>
 #include <DSPFilter.h>
 
 namespace lvlr
 {
-    class AudioSource
+    class AudioProcess
     {
     public:
         virtual void run() = 0;

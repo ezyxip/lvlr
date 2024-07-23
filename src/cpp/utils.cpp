@@ -24,7 +24,7 @@ bool lvlr::check_filter_file(std::string filepath)
     return checkfile(filepath);
 }
 
-AudioData lvlr::read_audio_file(std::string input_file)
+AudioContainer lvlr::read_audio_file(std::string input_file)
 {
     SF_INFO info;
     info.format = 0;
@@ -54,7 +54,12 @@ AudioData lvlr::read_audio_file(std::string input_file)
         std::cerr << "Warning: read " << read_count << " samples, expected " << num_samples << std::endl;
     }
 
-    return audioData;
+    return AudioContainer(
+        audioData.sampleRate,
+        audioData.channels,
+        audioData.totalFrames,
+        audioData.buffer
+    );
 }
 
 void lvlr::conf_options(std::map<std::string, std::string> &keys, CLI::App &app)

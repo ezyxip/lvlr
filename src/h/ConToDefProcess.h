@@ -1,38 +1,43 @@
-#ifndef FILEAUDIOSOURCE_H
-#define FILEAUDIOSOURCE_H
+#ifndef CONTODEFPROCESS_H
+#define CONTODEFPROCESS_H
 
-#include <AudioSource.h>
+#include <AudioProcess.h>
 #include <AudioContainer.h>
 
 #include <portaudio.h>
 
 namespace lvlr
 {
-    class ContainerAudioSource : public AudioSource
+    struct ConToDefProcessData{
+        std::shared_ptr<lvlr::Filter> filter;
+        std::shared_ptr<lvlr::AudioContainer> containter;
+    };
+
+    class ConToDefProcess : public AudioProcess
     {
     public:
         std::shared_ptr<lvlr::Filter> filter;
         lvlr::AudioContainer containter;
 
-        ContainerAudioSource(std::shared_ptr<lvlr::Filter> filter, lvlr::AudioContainer containter, PaStreamCallback callback);
-        ~ContainerAudioSource();
+        ConToDefProcess(std::shared_ptr<lvlr::Filter> filter, lvlr::AudioContainer containter);
+        ~ConToDefProcess();
         void setFilter(std::shared_ptr<lvlr::Filter> filter) override;
         void run() override;
         bool isDone() override;
         void wait() override;
 
     protected:
-        PaStreamCallback *callback;
-        std::shared_ptr<PaStream> pa_stream;
+        PaStream* pa_stream;
+        ConToDefProcessData data;
     };
 
-    int container_to_std_dinamic_callback(
+    int container_to_def_callback(
         const void *input,
         void *output,
         unsigned long frameCount,
         const PaStreamCallbackTimeInfo *timeInfo,
         PaStreamCallbackFlags statusFlags,
         void *userData);
-}
+};
 
 #endif

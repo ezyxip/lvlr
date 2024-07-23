@@ -1,8 +1,16 @@
 #include <iostream>
+#include <memory>
 #include <app.h>
 #include <thread>
+#include <ConToDefProcess.h>
+#include <DSPFilter.h>
 
-using namespace lvlr;
+class FakeFilter: public lvlr::Filter{
+public: 
+    float process(float sample) override{
+        return sample;
+    }
+};
 
 int main(int argc, char **argv)
 {
@@ -13,48 +21,19 @@ int main(int argc, char **argv)
     // ffilter - .yaml файл с фильтром
     std::map<std::string, std::string> keys;
 
-    conf_options(keys, app);
+    lvlr::conf_options(keys, app);
 
     CLI11_PARSE(app, argc, argv);
 
-    AudioData audio = read_audio_file(keys["finput"]);
+    lvlr::AudioContainer audio = lvlr::read_audio_file(keys["finput"]);
+    
+    std::shared_ptr<FakeFilter> filter {new FakeFilter()};
 
-    PaError err = Pa_Initialize();
-    if (err != paNoError)
-        printf("PortAudio error 1: %s\n", Pa_GetErrorText(err));
+    lvlr::ConToDefProcess process(std::static_pointer_cast<lvlr::Filter>(filter), audio);
 
-    PaStream *stream;
-    err = Pa_OpenDefaultStream(
-        &stream,
-        0,
-        audio.channels,
-        paFloat32,
-        audio.sampleRate,
-        paFramesPerBufferUnspecified,
-        pa_stream_callback,
-        &audio);
+    process.run();
 
-    if (err != paNoError)
-        printf("PortAudio error 2: %s\n", Pa_GetErrorText(err));
-
-    err = Pa_StartStream(stream);
-    if (err != paNoError)
-    {
-        std::cerr << "PortAudio error: " << Pa_GetErrorText(err) << std::endl;
-        Pa_CloseStream(stream);
-        Pa_Terminate();
-        return 1;
-    }
-
-    while (Pa_IsStreamActive(stream) == 1)
-    {
-        Pa_Sleep(100);
-    }
-
-    // Остановка и закрытие аудиопотока
-    Pa_StopStream(stream);
-    Pa_CloseStream(stream);
-    Pa_Terminate();
+    process.wait();
 
     return 0;
 }

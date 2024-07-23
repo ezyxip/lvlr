@@ -1,19 +1,20 @@
 #include <stdexcept>
 #include <functional>
-#include <ContainerAudioSource.h>
+#include <ConToDefProcess.h>
 #include <portaudio.h>
 
-lvlr::ContainerAudioSource::ContainerAudioSource(std::shared_ptr<lvlr::Filter> filter, lvlr::AudioContainer containter, PaStreamCallback callback)
+lvlr::ConToDefProcess::ConToDefProcess(std::shared_ptr<lvlr::Filter> filter, lvlr::AudioContainer containter)
     : filter(filter),
-      containter(containter),
-      callback(callback)
+      containter(containter)
 {
+    this->data = lvlr::ConToDefProcessData{filter, std::make_shared<AudioContainer>(this->containter)};
+
     PaError err = Pa_Initialize();
     if (err != paNoError)
     {
         throw std::runtime_error("PortAudio init exception: " + std::string(Pa_GetErrorText(err)));
     }
-    auto stream = pa_stream.get();
+    auto stream = pa_stream;
 
     err = Pa_OpenDefaultStream(
         &stream,
@@ -22,8 +23,8 @@ lvlr::ContainerAudioSource::ContainerAudioSource(std::shared_ptr<lvlr::Filter> f
         paFloat32,
         containter.getSampleRate(),
         paFramesPerBufferUnspecified,
-        callback,
-        this);
+        container_to_def_callback,
+        &data);
 
     if (err != paNoError)
     {
@@ -31,26 +32,26 @@ lvlr::ContainerAudioSource::ContainerAudioSource(std::shared_ptr<lvlr::Filter> f
     }
 }
 
-void lvlr::ContainerAudioSource::setFilter(std::shared_ptr<lvlr::Filter> filter)
+void lvlr::ConToDefProcess::setFilter(std::shared_ptr<lvlr::Filter> filter)
 {
     this->filter = filter;
 }
 
-void lvlr::ContainerAudioSource::run()
+void lvlr::ConToDefProcess::run()
 {
-    PaError err = Pa_StartStream(pa_stream.get());
+    PaError err = Pa_StartStream(pa_stream);
     if (err != paNoError)
     {
         throw std::runtime_error("PortAudio stream starting exception: " + std::string(Pa_GetErrorText(err)));
     }
 }
 
-bool lvlr::ContainerAudioSource::isDone()
+bool lvlr::ConToDefProcess::isDone()
 {
-    return Pa_IsStreamActive(pa_stream.get()) != 1;
+    return Pa_IsStreamActive(pa_stream) != 1;
 }
 
-void lvlr::ContainerAudioSource::wait()
+void lvlr::ConToDefProcess::wait()
 {
     while (!isDone())
     {
@@ -58,14 +59,14 @@ void lvlr::ContainerAudioSource::wait()
     }
 }
 
-lvlr::ContainerAudioSource::~ContainerAudioSource()
+lvlr::ConToDefProcess::~ConToDefProcess()
 {
-    Pa_StopStream(pa_stream.get());
-    Pa_CloseStream(pa_stream.get());
+    Pa_StopStream(pa_stream);
+    Pa_CloseStream(pa_stream);
     Pa_Terminate();
 }
 
-int lvlr::container_to_std_dinamic_callback(
+int lvlr::container_to_def_callback(
     const void *input,
     void *output,
     unsigned long frameCount,
@@ -73,7 +74,7 @@ int lvlr::container_to_std_dinamic_callback(
     PaStreamCallbackFlags statusFlags,
     void *audioManager)
 {
-    ContainerAudioSource* data = static_cast<ContainerAudioSource*>(audioManager);
+    ConToDefProcess* data = static_cast<ConToDefProcess*>(audioManager);
     AudioContainer* audioData = &data->containter;
     float *out = static_cast<float *>(output);
 
