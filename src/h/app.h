@@ -29,14 +29,6 @@ namespace lvlr
     bool check_filter_file(std::string filepath);
 
     AudioContainer read_audio_file(std::string input_file);
-
-    int pa_stream_callback(
-        const void *input,
-        void *output,
-        unsigned long frameCount,
-        const PaStreamCallbackTimeInfo *timeInfo,
-        PaStreamCallbackFlags statusFlags,
-        void *userData);
 }
 
 #endif

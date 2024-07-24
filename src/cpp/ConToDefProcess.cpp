@@ -18,7 +18,7 @@ lvlr::ConToDefProcess::ConToDefProcess(std::shared_ptr<lvlr::Filter> filter, std
     err = Pa_OpenDefaultStream(
         &pa_stream,
         0,
-        containter->getChannels(),
+        1,
         paFloat32,
         containter->getSampleRate(),
         paFramesPerBufferUnspecified,
@@ -73,18 +73,22 @@ int lvlr::container_to_def_callback(
     PaStreamCallbackFlags statusFlags,
     void *audioManager)
 {
-    ConToDefProcess* data = static_cast<ConToDefProcess*>(audioManager);
+    ConToDefProcessData* data = static_cast<ConToDefProcessData*>(audioManager);
     auto audioData = data->containter;
+    auto filter = data->filter;
     float *out = static_cast<float *>(output);
 
     for (size_t i = 0; i < frameCount; ++i)
     {
-        if (audioData->getPosition() >= audioData->getTotalFrames())
+        if (audioData->getPosition() >= audioData->getTotalFrames() * audioData->getChannels() - 1)
         {
             return paComplete;
         }
-        *out++ = audioData->nextSample();
-        
+        float sample = 0;
+        for(int j = 0; j < audioData->getChannels(); j++){
+            sample += audioData->nextSample();
+        }
+        *out++ = filter->process(sample);
     }
     return paContinue;
 }

@@ -36,12 +36,8 @@ int main(int argc, char **argv)
     lvlr::ConToDefProcess process(std::static_pointer_cast<lvlr::Filter>(filter), audio);
 
     process.run();
-    std::cout << "1235";
-    Pa_Sleep(3000);
 
-    std::cout << "!!!";
-    // process.wait();
-    // std::this_thread::sleep_for(2000ms);
+    process.wait();
     
 
     return 0;

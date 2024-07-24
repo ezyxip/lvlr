@@ -83,29 +83,3 @@ void lvlr::conf_options(std::map<std::string, std::string> &keys, CLI::App &app)
         keys["ffilter"] = strs[0];
         return check_filter_file(strs[0]); }, "Filter .yaml file path");
 }
-
-int lvlr::pa_stream_callback(
-    const void *input,
-    void *output,
-    unsigned long frameCount,
-    const PaStreamCallbackTimeInfo *timeInfo,
-    PaStreamCallbackFlags statusFlags,
-    void *userData)
-{
-    AudioData *audioData = static_cast<AudioData *>(userData);
-    float *out = static_cast<float *>(output);
-
-    for (size_t i = 0; i < frameCount; ++i)
-    {
-        if (audioData->position >= audioData->totalFrames)
-        {
-            return paComplete;
-        }
-        for (int ch = 0; ch < audioData->channels; ++ch)
-        {
-            *out++ = audioData->buffer[audioData->position * audioData->channels + ch];
-        }
-        ++audioData->position;
-    }
-    return paContinue;
-}
