@@ -58,8 +58,7 @@ AudioContainer lvlr::read_audio_file(std::string input_file)
         audioData.sampleRate,
         audioData.channels,
         audioData.totalFrames,
-        audioData.buffer
-    );
+        audioData.buffer);
 }
 
 void lvlr::conf_options(std::map<std::string, std::string> &keys, CLI::App &app)
@@ -70,7 +69,7 @@ void lvlr::conf_options(std::map<std::string, std::string> &keys, CLI::App &app)
         keys["finput"] = strs[0];
         return check_input_file(strs[0]); }, "Input audiofile path")
         ->required();
- 
+
     app.add_option("--file-output", [&](std::vector<std::string> strs) -> bool
                    {
         bool res = true;
@@ -82,4 +81,11 @@ void lvlr::conf_options(std::map<std::string, std::string> &keys, CLI::App &app)
         bool res = true;
         keys["ffilter"] = strs[0];
         return check_filter_file(strs[0]); }, "Filter .yaml file path");
+
+    app.add_option("--db", [&](std::vector<std::string> strs) -> bool
+                   {
+        bool res = true;
+        keys["db"] = strs[0];
+        return true; }, "Gain, dB")
+        ->required();
 }

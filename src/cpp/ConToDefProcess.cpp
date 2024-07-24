@@ -1,6 +1,7 @@
 #include <stdexcept>
 #include <functional>
 #include <ConToDefProcess.h>
+#include <Biquad.h>
 #include <portaudio.h>
 
 lvlr::ConToDefProcess::ConToDefProcess(std::shared_ptr<lvlr::Filter> filter, std::shared_ptr<lvlr::AudioContainer> containter)

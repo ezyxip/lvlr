@@ -5,16 +5,7 @@
 #include <thread>
 #include <ConToDefProcess.h>
 #include <DSPFilter.h>
-
-using namespace std::chrono_literals;
-
-
-class FakeFilter: public lvlr::Filter{
-public: 
-    float process(float sample) override{
-        return sample;
-    }
-};
+#include <Biquad.h>
 
 int main(int argc, char **argv)
 {
@@ -31,7 +22,9 @@ int main(int argc, char **argv)
 
     auto audio = std::make_shared<lvlr::AudioContainer>(lvlr::read_audio_file(keys["finput"]));
     
-    std::shared_ptr<FakeFilter> filter {new FakeFilter()};
+    std::shared_ptr<Biquad> filter {new Biquad(
+        bq_type_highshelf, 1000, 1, std::stod(keys["db"])
+    )};
 
     lvlr::ConToDefProcess process(std::static_pointer_cast<lvlr::Filter>(filter), audio);
 
